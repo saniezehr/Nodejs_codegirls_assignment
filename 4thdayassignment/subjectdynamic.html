@@ -1,0 +1,63 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Student Marks Table</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Student Marks Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Physics</th>
+                <th>Chemistry</th>
+                <th>Mathematics</th>
+                <th>Biology</th>
+                <th>English</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+
+        </tbody>
+    </table>
+    
+    <script>
+        const students = [
+            { name: 'Ali', Physics: 75, Chemistry: 82, Mathematics: 88 },
+            { name: 'Sara', Physics: 89, Chemistry: 91, Mathematics: 84, Biology: 90 },
+            { name: 'Hira', Physics: 92, Chemistry: 87, Mathematics: 90, English: 85 }
+        ];
+
+        const tableBody = document.getElementById('tableBody');
+
+        students.forEach(student => {
+            const row = `<tr>
+                <td>${student.name}</td>
+                <td>${student.Chemistry || 'N/A'}</td>
+                <td>${student.Physics || 'N/A'}</td>
+                <td>${student.Mathematics || 'N/A'}</td>
+                <td>${student.Biology || 'N/A'}</td>
+                <td>${student.English || 'N/A'}</td>
+            </tr>`;
+            tableBody.innerHTML += row;
+        });
+    </script>
+</body>
+</html> 
+
