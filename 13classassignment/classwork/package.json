@@ -1,0 +1,15 @@
+{
+  "name": "classwork",
+  "version": "1.0.0",
+  "type":"module",
+  "main": "route.js",
+  "scripts": {
+    "express": "node route.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
