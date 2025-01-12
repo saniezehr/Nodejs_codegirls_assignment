@@ -5,17 +5,34 @@ const port = 3000;
 
 app.use(express.json());
 
-app.post('/todo', (req, res) => {
-    const todos = req.body; // Assuming an array of tasks is sent
+// Array to store todo
+let todos = [];
 
-    if (!todos || todos.length === 0) {
-        return res.status(400).json({ error: "No tasks provided" });
+app.post('/todo', (req, res) => {
+    const tasks = req.body; 
+
+    if (!tasks || tasks.length === 0) {
+        
+         res.status(400).json({ error: "No tasks provided" });
     }
 
-    console.log("Received tasks:", todos);
+    todos.push(...tasks); // Add tasks to the array
+    console.log("Received tasks:", tasks);
     res.status(200).json({
         message: "Tasks submitted successfully",
-        received: todos
+        received: tasks
+    });
+});
+
+app.get('/todo', (req, res) => {
+    if (todos.length === 0) {
+        
+         res.status(404).json({ error: "No tasks found" });
+    }
+
+    res.status(200).json({
+        message: "Tasks retrieved successfully",
+        todos
     });
 });
 
