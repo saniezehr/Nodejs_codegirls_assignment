@@ -1,0 +1,16 @@
+{
+  "name": "assignment",
+  "version": "1.0.0",
+  "main": "user.js",
+  "type": "module",
+  "scripts": {
+    "express": "node user.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}
