@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDB Form</title>
+</head>
+<body>
+    <h2>Enter User Details</h2>
+
+    <!-- ✅ FORM FOR SUBMITTING DATA TO DATABASE -->
+    <form action="http://localhost:5000/submit" method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" required><br><br>
+
+        <label>Age:</label>
+        <input type="number" name="age" required><br><br>
+
+        <label>City:</label>
+        <input type="text" name="city" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Users List</h2>
+    <button onclick="fetchUsers()">Load Users</button>
+    <ul id="userList"></ul>
+
+    <script>
+        async function fetchUsers() {
+            const response = await fetch("http://localhost:5000/users");
+            const users = await response.json();
+
+            const userList = document.getElementById("userList");
+            userList.innerHTML = "";
+            users.forEach(user => {
+                userList.innerHTML += `<li>${user.name} (${user.age}) - ${user.city}</li>`;
+            });
+        }
+    </script>
+</body>
+</html>
