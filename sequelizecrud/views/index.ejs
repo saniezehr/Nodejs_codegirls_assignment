@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD with Sequelize</title>
+</head>
+<body>
+    <h2>Items List</h2>
+    <ul>
+        <% items.forEach(item => { %>
+            <li>
+                <%= item.name %> - $<%= item.price %>
+                <a href="/edit/<%= item.id %>">Edit</a>
+                <form action="/delete/<%= item.id %>" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+
+    <h3>Add Item</h3>
+    <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Item Name" required>
+        <input type="number" name="price" placeholder="Price" required>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>
